@@ -1,0 +1,34 @@
+<ion-content>
+  <div class="center-container">
+    <div class="ion-padding-vertical">
+
+      <ion-card class="ion-text-center" > 
+        <img src="../../../assets/img/pao.jpg" alt=""> 
+        <ion-card-content>
+          <ion-card-header>
+            <ion-toolbar>
+              <h1>Sistema de asistencia Duoc</h1>
+              <br>
+              <h2> Inicio de sesion</h2>
+            </ion-toolbar>
+          </ion-card-header>
+
+          <ion-item>
+            <ion-input [(ngModel)]="usuario.cuenta" labelPlacement="floating" label="Cuenta"></ion-input>
+          </ion-item>
+          <ion-input [(ngModel)]="usuario.password" type="password" labelPlacement="floating" label="Contraseña">
+
+          </ion-input>
+          <ion-item>
+            <ion-button (click)="ingresar()">
+              <ion-icon slot="start" name="person"></ion-icon>
+              Ingresar
+            </ion-button>
+          </ion-item>
+        </ion-card-content>
+
+      </ion-card>
+
+    </div>
+  </div>
+</ion-content>
