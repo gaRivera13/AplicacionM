@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AlertController, AnimationController } from '@ionic/angular';
 import { NivelEducacional } from 'src/app/model/nivel-educacional';
 import { Usuario } from 'src/app/model/usuario';
 
@@ -8,20 +9,22 @@ import { Usuario } from 'src/app/model/usuario';
   templateUrl: './inicio.page.html',
   styleUrls: ['./inicio.page.scss'],
 })
-export class InicioPage implements OnInit {
+export class InicioPage implements OnInit , AfterViewInit {
+  @ViewChild('titulo',({read: ElementRef}) itemTitulo : ElementRef;
 
-  public usuario: Usuario;
+  public usuario: Usuario = new Usuario('','','','','','','',
+    NivelEducacional.findNivelEducacionalById(1)!,undefined);
+
+  public listaNivelesEducacionales = NivelEducacional.getNivelesEducacionales();
 
   constructor(
+    private alertController: AlertController,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private animationController: AnimationController
+  )
 
-    
-  ) { 
-    this.usuario = new Usuario('','','','','','','',
-      NivelEducacional.findNivelEducacionalById(1)!,undefined
-    );
-
+  { 
     this.activatedRoute.queryParams.subscribe(params => { 
       const nav = this.router.getCurrentNavigation();
       if (nav){

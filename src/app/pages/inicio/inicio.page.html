@@ -1,4 +1,57 @@
 
-<h1>Bienvenido  {{ usuario.nombre }} {{ usuario.apellido }} :D
-  
-</h1>
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-tittle #titulo class="ion-text-left ion-text font-size-18">
+            <div>
+                Sistema de Asistencia DuocUc
+            </div>
+        </ion-tittle>
+
+    </ion-toolbar>
+</ion-header>
+
+<div class="book">
+    <ion-content [fullscreen]="true" class="ion-padding-horizontal" #page class ="page">
+        <ion-tittle class="ion-padding-top">
+            <ion-label>
+                <h1 class="ion-text-center">
+                    Bienbenido {{usuario.nombre}} {{usuario.apellido}}
+                </h1>
+            </ion-label>
+        </ion-tittle>
+        <b class="ion-text-center">
+            <h4>Mis datos</h4>
+        </b>
+        <ion-item #itemCuenta>
+            <ion-input labelPlacement="floating" label="Cuenta"
+            [(ngModel)]="usuario.nombre" >
+            </ion-input>
+            
+        <ion-item #itemApellido>
+                <ion-input labelPlacement="floating" label="Cuenta"
+                [(ngModel)]="usuario.nombre" >
+                </ion-input>
+
+        </ion-item>
+
+        <ion-item #itemEducacion>
+            <ion-label position="floating">Educación
+            </ion-label>
+            <ion-select placeholder="Seleccione nivel"
+            [(ngModel)]="usuario.nivelEducacional!.id">
+            <ion-select-option *ngFor="let nivel of listaNivelesEducacionales" [value]="nivel.id">
+                {{nivel.nombre}}
+
+            </ion-select-option>
+
+            </ion-select>
+            <ol>
+                <li *ngFor="let nivel of listaNivelesEducacionales">
+                    {{nivel.nombre}}
+
+                </li>
+            </ol>
+
+        </ion-item>
+    </ion-content>
+</div>
