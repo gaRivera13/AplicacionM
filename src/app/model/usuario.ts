@@ -3,6 +3,7 @@ import { Persona } from "./persona";
 
 export class Usuario extends Persona {
 
+  
   public cuenta: string;
   public correo: string;
   public password: string;
