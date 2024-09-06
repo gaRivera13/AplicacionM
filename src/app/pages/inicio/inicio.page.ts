@@ -37,7 +37,39 @@ export class InicioPage implements OnInit , AfterViewInit {
     });
   }
 
-  ngOnInit() {
+  ngAfterContentInit(): void{
+    throw new Error('Method not implemente.');
   }
 
+  public ngOnInit(): void {
+
+  }
+
+  public ngAfterViewInit(): void {
+    if(this.itemTitulo){
+      const animation = this.animationController
+      .create()
+      .addElement(this.itemTitulo.nativeElement)
+      .iterations(Infinity)
+      .duration(6000)
+      .fromTo('transform','translate(0%)','translate(100%)')
+      .fromTo('opacity',0.2,1);
+    }
+  }
+
+  public limpiar1(): void{
+  }
+
+  public limpiar2(): void{
+  }
+
+  public animateItem1(elementRef: any, duration:number){
+
+  }
+  public animateItem2(elementRef: any, duration:number){
+  }
+
+  createPageTurnAnimation(){
+    
+  }
 }
