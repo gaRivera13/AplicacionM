@@ -14,7 +14,35 @@ const routes: Routes = [
   {
     path: 'inicio',
     loadChildren: () => import('./pages/inicio/inicio.module').then( m => m.InicioPageModule)
+  },  {
+    path: 'correo',
+    loadChildren: () => import('./pages/correo/correo.module').then( m => m.CorreoPageModule)
   },
+  {
+    path: 'pregunta',
+    loadChildren: () => import('./pages/pregunta/pregunta.module').then( m => m.PreguntaPageModule)
+  },
+  {
+    path: 'correcto',
+    loadChildren: () => import('./pages/correcto/correcto.module').then( m => m.CorrectoPageModule)
+  },
+  {
+    path: 'incorrecto',
+    loadChildren: () => import('./pages/incorrecto/incorrecto.module').then( m => m.IncorrectoPageModule)
+  },
+  {
+    path: 'mi-clase',
+    loadChildren: () => import('./pages/mi-clase/mi-clase.module').then( m => m.MiClasePageModule)
+  },
+  {
+    path: 'mi-clase',
+    loadChildren: () => import('./pages/mi-clase/mi-clase.module').then( m => m.MiClasePageModule)
+  },
+  {
+    path: 'mis-datos',
+    loadChildren: () => import('./pages/mis-datos/mis-datos.module').then( m => m.MisDatosPageModule)
+  },
+
 ];
 
 @NgModule({
