@@ -19,11 +19,12 @@ export class LoginPage implements OnInit {
   ) { 
     this.usuario = new Usuario ('','','','','','','',
     NivelEducacional.findNivelEducacionalById(1)!,undefined);
-    this.usuario.cuenta ='Nombre';
+    this.usuario.cuenta ='atorres';
     this.usuario.password ='1234';
   }
 
-  ngOnInit() {
+  public ngOnInit(): void {
+    //if (this.usuario.correo !== '') this.ingresar();
   }
 
    public ingresar(): void {
@@ -35,19 +36,19 @@ export class LoginPage implements OnInit {
         this.usuario.cuenta, this.usuario.password);
         
       if (usu) {
-        const extras: NavigationExtras={
+        const navigationExtras: NavigationExtras={
            state:{
             usuario: usu
           }
-        }
+        };
         this.mostrarMensaje('Bienvenido!');
-        this.router.navigate(['/inicio'], extras);
+        this.router.navigate(['/inicio'], navigationExtras);
       }
     }
   }
 
   public validarUsuario(usuario: Usuario): boolean{
-    const mensajeError = usuario.validarCuenta();
+    const mensajeError = usuario.validarUsuario();
     if(mensajeError){
       this.mostrarMensaje(mensajeError);
       return false;

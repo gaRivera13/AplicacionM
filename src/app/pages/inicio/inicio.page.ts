@@ -10,7 +10,7 @@ import { Usuario } from 'src/app/model/usuario';
   styleUrls: ['./inicio.page.scss'],
 })
 export class InicioPage implements OnInit , AfterViewInit {
-  @ViewChild('titulo',({read: ElementRef}) itemTitulo : ElementRef;
+  @ViewChild('titulo',({read: ElementRef}) itemTitulo : ElementRef);
 
   public usuario: Usuario = new Usuario('','','','','','','',
     NivelEducacional.findNivelEducacionalById(1)!,undefined);
@@ -71,5 +71,48 @@ export class InicioPage implements OnInit , AfterViewInit {
 
   createPageTurnAnimation(){
     
+  }
+
+  public mostratDatosPersona(): void{
+    if (this.usuario.cuenta.trim() === ''){
+      this.presentAlert('Datos personales', 'Para mostrar los datos de la persona, '
+        + 'al menos debe tener un valor para el nombre o el apellido.');
+        return;
+    }
+
+    if (this.usuario.nombre.trim() === ''&& this.usuario.apellido === ''){
+      this.presentAlert ('Datos personales', 'Para mostrar los datos de la persona, '
+        + 'al menos debe tener un valor para el nombre o el apellido.');
+        return;
+    }
+
+    let mensaje = `
+      <small>
+        <br>Cuenta: ${this.usuario.cuenta}
+        <br>Usuario: ${this.usuario.correo}
+        <br>Nombre: ${this.usuario.nombre}
+        <br>Apellido: ${this.usuario.apellido}
+        <br>Educación: ${this.usuario.getTextoNivelEducacional()}
+        <br>Nacimiento: ${this.formatDateDDMMYYYY(this.usuario.fechaNacimiento)}
+      </small>
+    `;
+    this.presentAlert('Datos personales', mensaje);
+  }
+
+  public async presentAlert(titulo: string, mensaje: string){
+    const alert = await this.alertController.create({
+      header: titulo,
+      message: mensaje,
+      buttons: ['OK']
+    });
+    await alert.present();
+  }
+
+  public formatDateDDMMYYYY(date: Date | undefined): string {
+    if (!date) return 'No asignada';
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth()+1).toString().padStart(2, '0');
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
   }
 }
