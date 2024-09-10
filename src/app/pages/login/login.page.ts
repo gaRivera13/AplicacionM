@@ -36,8 +36,8 @@ export class LoginPage implements OnInit {
         this.usuario.cuenta, this.usuario.password);
         
       if (usu) {
-        const navigationExtras: NavigationExtras={
-           state:{
+        const navigationExtras: NavigationExtras = {
+           state: {
             usuario: usu
           }
         };

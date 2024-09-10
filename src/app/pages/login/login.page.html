@@ -1,41 +1,50 @@
-<ion-content>
+<ion-content [fullscreen]="true">
+
   <div class="center-container">
-    <div class="ion-padding-vertical">
+    <div class="fondo">
+      <div class="ion-padding-vertical">
 
-      <ion-card class="ion-text-center" > 
-        <img src="../../../assets/img/pao.jpg" alt="DUOC"> 
-
-        <ion-card-content>
-          <ion-card-header>
-            <ion-toolbar>
-              <h1>Sistema de asistencia Duoc</h1>
-              <br>
-              <h2> Inicio de sesion</h2>
-            </ion-toolbar>
-          </ion-card-header>
-
-          <ion-item>
-            <ion-input [(ngModel)]="usuario.cuenta" labelPlacement="floating" label="Cuenta"></ion-input>
-          </ion-item>
-          <ion-input [(ngModel)]="usuario.password" type="password" labelPlacement="floating" label="Contraseña">
-          </ion-input>
-
-          <ion-grid>
-            <ion-row>
-              <ion-col size="12" class="centrar">
-                <ion-button shape="block" size="small" (click)="ingresar()">Ingresar</ion-button>
-              </ion-col>
-            </ion-row>
-            <ion-label>
-              <br>
-              <a routerLink="">Crea tu cuenta gratis</a>
-              <br><br>
-            </ion-label>
-          </ion-grid>
-        </ion-card-content>
-
-      </ion-card>
-
+        <ion-card class="ion-text-center" style="background-color: #ffffff; width: 500px; height: 530px; box-shadow: 0 0 10px rgba(0,0,0,0.2);"> 
+          <img src="../../../assets/img/Logo_DuocUC.svg.png" alt="DUOC" class="foto-portada"> 
+  
+          <ion-card-content>
+            <ion-card-header class="ion-card-header">
+              <ion-toolbar>
+                <h2> istema de asistencia DUOC </h2>
+                <br>
+                <h2 style="color: black;">Inicio de sesión</h2>
+                <br>
+              </ion-toolbar>
+            </ion-card-header>
+  
+            <ion-item>
+              <ion-input [(ngModel)]="usuario.cuenta" labelPlacement="floating" label="Cuenta"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input [(ngModel)]="usuario.password" type="password" labelPlacement="floating" label="Contraseña">
+              </ion-input>
+            </ion-item>
+  
+            <ion-grid>
+              <ion-row>
+                <ion-col size="12" class="centrar">
+                  <ion-button shape="round" size="small" (click)="ingresar()">
+                    <ion-icon slot="icon-only" name="person-circle"></ion-icon>
+                    Ingresar
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+              <ion-label>
+                <br>
+                <a routerLink="">Crea tu cuenta gratis</a>
+                <br><br>
+              </ion-label>
+            </ion-grid>
+          </ion-card-content>
+  
+        </ion-card>
+  
+      </div>
     </div>
   </div>
 </ion-content>

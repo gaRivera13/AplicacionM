@@ -1,4 +1,3 @@
-
 <ion-header>
     <ion-toolbar color="primary">
         <ion-title #titulo class="ion-text-left ion-text font-size-18">
@@ -10,15 +9,15 @@
 </ion-header>
 
 <div class="book">
-    <ion-content #page [fullscreen]="true" class="ion-padding-horizontal page">
-        <ion-title class="ion-padding-top">
+    <ion-content [fullscreen]="true" #page class="ion-padding-horizontal page">
+        <ion-toolbar class="ion-padding-top">
             <ion-label>
                 <h1 class="ion-text-center">
                     Bienbenido {{usuario.nombre}} {{usuario.apellido}}
                 </h1>
                 <h4>Mis Datos</h4>
             </ion-label>
-        </ion-title>
+        </ion-toolbar>
 
         <ion-item #itemCuenta>
             <ion-input [(ngModel)]="usuario.cuenta"
