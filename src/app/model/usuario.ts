@@ -37,6 +37,12 @@ export class Usuario extends Persona {
       usu => usu.cuenta === cuenta && usu.password === password);
   }
 
+  //para validar la pregunta secreta del correo
+  public buscarUsuarioPorCorreo(correo: string): Usuario {
+    return Usuario.getListaUsuarios().find(
+      usu => usu.cuenta === correo );
+  }
+
   public validarCuenta(): string {
     if (this.buscarUsuarioValido(this.cuenta, this.password)) {
       return '';

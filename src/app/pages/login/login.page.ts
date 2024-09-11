@@ -48,6 +48,10 @@ export class LoginPage implements OnInit {
     }
   }
 
+  public ingresarPaginaValidarCorreo(): void{
+    this.router.navigate(['/correo']);
+  }
+
   public validarUsuario(usuario: Usuario): boolean{
     const mensajeError = usuario.validarUsuario();
     if(mensajeError) {
