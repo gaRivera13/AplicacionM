@@ -16,9 +16,10 @@ export class LoginPage implements OnInit {
   constructor(
     private toastController: ToastController,
     private router: Router
-  ) { 
+  ) 
+  { 
     this.usuario = new Usuario ('','','','','','','',
-    NivelEducacional.findNivelEducacionalById(1)!,undefined);
+    NivelEducacional.findNivelEducacionalById(1)!, undefined);
     this.usuario.cuenta ='atorres';
     this.usuario.password ='1234';
   }
@@ -49,7 +50,7 @@ export class LoginPage implements OnInit {
 
   public validarUsuario(usuario: Usuario): boolean{
     const mensajeError = usuario.validarUsuario();
-    if(mensajeError){
+    if(mensajeError) {
       this.mostrarMensaje(mensajeError);
       return false;
     }

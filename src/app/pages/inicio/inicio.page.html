@@ -1,90 +1,59 @@
 <ion-header>
     <ion-toolbar color="primary">
-        <ion-title #titulo class="ion-text-left ion-text font-size-18">
-            <div>
-                Sistema de Asistencia DuocUc
-            </div>
-        </ion-title>
+      <ion-title class="font-size-18">
+        Sistema de Asistencia DUOC
+      </ion-title>
     </ion-toolbar>
-</ion-header>
+  </ion-header>
+  <br>
+  <ion-content [fullscreen]="true" #page class="ion-padding-horizontal page">
 
-<div class="book">
-    <ion-content [fullscreen]="true" #page class="ion-padding-horizontal page">
-        <ion-toolbar class="ion-padding-top">
-            <ion-label>
-                <h1 class="ion-text-center">
-                    Bienbenido {{usuario.nombre}} {{usuario.apellido}}
-                </h1>
-                <h4>Mis Datos</h4>
-            </ion-label>
-        </ion-toolbar>
+    <ion-button (click)="cargarImagenDesdeArchivo()" expand="full" shape="round">
+        <ion-icon slot="start" name="camera"></ion-icon>
+        Cargar Imagen Con Codigo QR
+    </ion-button>
 
-        <ion-item #itemCuenta>
-            <ion-input [(ngModel)]="usuario.cuenta"
-                label="Cuenta" labelPlacement="floating">
-            </ion-input>
-        </ion-item>
-        
-        <ion-item #itemNombre>
-            <ion-input [(ngModel)]="usuario.nombre" 
-            label="Nombre" labelPlacement="floating">
-            </ion-input>
-        </ion-item>
+    <ion-button *ngIf="!escaneando" (click)="comenzarEscaneoQR()" expand="full" shape="round">
+        <ion-icon slot="start" name="videocam-outline"></ion-icon>
+        Comenzar Escaneo De QR
+    </ion-button>
 
-        <ion-item #itemApellido>
-            <ion-input [(ngModel)]="usuario.apellido"
-                label="Apellido" labelPlacement="floating">
-            </ion-input>
-        </ion-item>
-        <ion-item #itemEducacion>
-            <ion-label position="floating" class="font-size-18">Educación</ion-label>
-            <ion-select [(ngModel)]="usuario.nivelEducacional!.id">
-            <ion-select-option *ngFor="let nivel of listaNivelesEducacionales" [value]="nivel.id">
-                {{nivel.nombre}}
-            </ion-select-option>
-            </ion-select>
-        </ion-item>
-        <ion-item #itemFechaNacimiento>
-            <table>
-                <tr>
-                    <td class="font-size-12">
-                        Nacimiento
-                    </td>
-                    <td class="cell-aling-right">
-                        <input matInput 
-                        [matDatepicker]="fechaNacimiento"
-                        [(ngModel)]="usuario.fechaNacimiento"
-                        placeholder="dd/mm/yyyy"
-                        class="date-width">
-                    </td>
-                    <td class="cell-width-0">
-                        <mat-datepicker-toggle matFuffix [for]="fechaNacimiento"></mat-datepicker-toggle>
-                        <mat-datepicker #fechaNacimiento></mat-datepicker>
-                    </td>
-                </tr>
-            </table>
-        </ion-item>
-        
+    <ion-button  *ngIf="escaneando" (click)="detenerEscaneoQR()" expand="full" shape="round">
+        <ion-icon slot="start" name="stop-circle-outline"></ion-icon>
+        Detener Escaneo De QR
+    </ion-button>
 
-        <ion-grid>
-            <ion-row>
-                <ion-col col-3>
-                    <ion-button (click)="limpiar1()" size="small" shape="round">Limpieza DeIzp
-                    </ion-button>
-                </ion-col>
-                <ion-col col-3>
-                    <ion-button (click)="limpiar2()" size="small" shape="round">Rotando
-                    </ion-button>
-                </ion-col>
-                <ion-col col-3>
-                    <ion-button (click)="createPageTurnAnimation()" size="small" shape="round">Vuelta de hoja
-                    </ion-button>
-                </ion-col>
-                <ion-col col-3>
-                    <ion-button (click)="mostrarDatosPersona()" size="small" shape="round">Ver Mis Datos
-                    </ion-button>
-                </ion-col>
-            </ion-row>
-        </ion-grid>
-    </ion-content>
-</div>
+    <ion-button  (click)="limpiarDatos()" expand="full" shape="round">
+        <ion-icon slot="start" name="trash-outline"></ion-icon>
+        Limpiar Datos
+    </ion-button>
+
+    <video #video [hidden]="!escaneando" width="100%"></video>
+    <canvas #canvas hidden></canvas>
+
+    <!-- <div class="center-container"> -->
+    
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Los datos del Código QR son los siguientes:</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content class="borde">
+            <br>
+          <h2 *ngIf="datosQR">
+           Datos: {{ datosQR }}
+          </h2>
+          <br>
+          <h2>
+            Escaneando: {{ escaneando }}
+          </h2>
+          <h2 *ngIf="!datosQR">
+            Sin información
+          </h2>
+        </ion-card-content>
+      </ion-card>
+      
+    <!-- </div> -->
+  
+  </ion-content>
+  

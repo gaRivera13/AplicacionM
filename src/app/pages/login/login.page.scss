@@ -18,7 +18,7 @@ body {
   display: flex;
   justify-content: center; /* Centra horizontalmente */
   align-items: center;     /* Centra verticalmente */
-  height: 90vh;           /* Ocupa toda la altura de la pantalla */
+  height: 100vh;           /* Ocupa toda la altura de la pantalla */
 }
 
 .foto-portada {
@@ -37,7 +37,8 @@ body {
   }
 
   .foto-portada {
-    width: 30%;
+    width: 50%;
+    margin-top: 40px;
   }
 }
 
@@ -45,4 +46,26 @@ body {
   display: flex;
   justify-content: center; /* Centra horizontalmente */
   align-items: center;     /* Centra verticalmente */
+}
+
+.ion-card-header {
+  background-color: #021623;
+  color: #ffffff;
+  border-radius: 200px;
+  padding: 1em; /* ajusta el padding para que el texto tenga espacio suficiente */
+  height: 60px; /* establece la altura en automático */
+  display: flex; /* convierte el contenedor en un contenedor flexible */
+  justify-content: center; /* centra el contenido horizontalmente */
+  align-items: center; /* centra el contenido verticalmente */
+}
+
+.fondo {
+  background-image: url('../../../assets/img/pao.jpg');
+  background-size: cover; /* Forzar que la imagen se escale al 100% del contenedor */
+  background-position: center; /* Centrar la imagen */
+  width: 7000px;
+  height: 775px; /* Asegura que el contenedor cubra la pantalla */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

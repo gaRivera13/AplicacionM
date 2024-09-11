@@ -14,7 +14,8 @@ const routes: Routes = [
   {
     path: 'inicio',
     loadChildren: () => import('./pages/inicio/inicio.module').then( m => m.InicioPageModule)
-  },  {
+  },
+  {
     path: 'correo',
     loadChildren: () => import('./pages/correo/correo.module').then( m => m.CorreoPageModule)
   },
@@ -29,10 +30,6 @@ const routes: Routes = [
   {
     path: 'incorrecto',
     loadChildren: () => import('./pages/incorrecto/incorrecto.module').then( m => m.IncorrectoPageModule)
-  },
-  {
-    path: 'mi-clase',
-    loadChildren: () => import('./pages/mi-clase/mi-clase.module').then( m => m.MiClasePageModule)
   },
   {
     path: 'mi-clase',
