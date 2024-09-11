@@ -35,21 +35,57 @@
     
       <ion-card>
         <ion-card-header>
-          <ion-card-title>Los datos del Código QR son los siguientes:</ion-card-title>
+          <ion-card-title class="center-container">Los datos del Código QR son los siguientes</ion-card-title>
         </ion-card-header>
-
         <ion-card-content class="borde">
-            <br>
-          <h2 *ngIf="datosQR">
-           Datos: {{ datosQR }}
-          </h2>
           <br>
-          <h2>
-            Escaneando: {{ escaneando }}
-          </h2>
-          <h2 *ngIf="!datosQR">
+          <table>
+            <h2 *ngIf="datosQR">
+              <tr>
+                <td class="ancho_columna-titulos"> Bloque de Inicio </td>
+                <td>{{bloqueInicio}}</td>
+              </tr>
+              <tr>
+                <td> Bloque de Termino </td>
+                <td>{{bloqueTermino}}</td>
+              </tr>
+              <tr>
+                <td> Dia </td>
+                <td>{{dia}}</td>
+              </tr>
+              <tr>
+                <td> Hora de Fin </td>
+                <td>{{horaFin}}</td>
+              </tr>
+              <tr>
+                <td> Hora de Inicio </td>
+                <td>{{horaInicio}}</td>
+              </tr>
+              <tr>
+                <td> Sigla </td>
+                <td>{{idAsignatura}}</td>
+              </tr>
+              <tr>
+                <td> Nombre de Asignatura </td>
+                <td>{{nombreAsignatura}}</td>
+              </tr>
+              <tr>
+                <td> Nombre del Profesor </td>
+                <td>{{nombreProfesor}}</td>
+              </tr>
+              <tr>
+                <td> Seccion </td>
+                <td>{{seccion}}</td>
+              </tr>
+              <tr>
+                <td> Sede </td>
+                <td>{{sede}}</td>
+              </tr>
+            </h2>
+          </table>
+          <h6 class="center-container" *ngIf="!datosQR">
             Sin información
-          </h2>
+          </h6>
         </ion-card-content>
       </ion-card>
       

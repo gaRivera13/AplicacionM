@@ -27,6 +27,18 @@ export class InicioPage implements OnInit {
   public datosQR: string = '';
   public loading: HTMLIonLoadingElement = null;
 
+  public bloqueInicio: number = 0;
+  public bloqueTermino: number = 0;
+  public dia: string ='';
+  public horaFin: string ='';
+  public horaInicio: string ='';
+  public idAsignatura: string ='';
+  public nombreAsignatura: string ='';
+  public nombreProfesor: string ='';
+  public seccion: string ='';
+  public sede: string ='';
+
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
@@ -59,7 +71,8 @@ export class InicioPage implements OnInit {
     let qrCode: QRCode | null = jsQR(img.data, img.width, img.height, { inversionAttempts: 'dontInvert'});
     if (qrCode) {
       this.escaneando = false;
-      this.datosQR = qrCode.data
+      this.datosQR = qrCode.data;
+      this.mostrarDatosQROrdenados(this.datosQR);
     }
     return this.datosQR !== '';
   //  const w: number = this.video.nativeElement.videoWidth;
@@ -79,6 +92,21 @@ export class InicioPage implements OnInit {
   //  }
   //  return false;
   }
+
+  public mostrarDatosQROrdenados(datosQR: string): void{
+    //  this.datosQR = datosQR;
+      const objetoDatosQR = JSON.parse(datosQR);
+      this.bloqueInicio = objetoDatosQR.bloqueInicio;
+      this.bloqueTermino = objetoDatosQR.bloqueTermino;
+      this.dia = objetoDatosQR.dia;
+      this.horaFin = objetoDatosQR.horaFin;
+      this.horaInicio = objetoDatosQR.horaFin;
+      this.idAsignatura = objetoDatosQR.idAsignatura;
+      this.nombreAsignatura = objetoDatosQR.nombreAsignatura;
+      this.nombreProfesor = objetoDatosQR.nombreProfesor;
+      this.seccion = objetoDatosQR.seccion;
+      this.sede = objetoDatosQR.sede;
+    }
 
   public cargarImagenDesdeArchivo(): void{
     //this.limpiarDatos();
@@ -140,10 +168,6 @@ export class InicioPage implements OnInit {
     (document.getElementById('input-file')  as HTMLInputElement).value ='';
   }
 
-  //public mostrarDatosQROrdenados(datosQR: string): void{
-  //  this.datosQR = datosQR;
-  //  const objetoDatosQR = JSON.parse(datosQR);
-  //}
 
   //navegar(pagina: string){
   //  this.usuario.navegarEnviandousuario(this.router.pagina);
